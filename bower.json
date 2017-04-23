@@ -1,0 +1,22 @@
+{
+  "name": "static-blog",
+  "authors": [
+    "Aashish Nehete <ashnehete@gmail.com>"
+  ],
+  "description": "A static blog for your website.",
+  "main": "index.html",
+  "keywords": [
+    "static",
+    "blog",
+    "website"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
