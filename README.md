@@ -1,5 +1,5 @@
-#Static blogger for your website
+# Static blogger for your website
 
-##Easy to maintain
+## Easy to maintain
 
-###Built with HandlebarJs
+### Built with HandlebarJs
