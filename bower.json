@@ -1,7 +1,8 @@
 {
   "name": "static-blog",
   "authors": [
-    "Aashish Nehete <ashnehete@gmail.com>"
+    "Aashish Nehete <ashnehete@gmail.com>",
+    "Nisheet Sinvhal <nisheet1.sinvhal@gmail.com>"
   ],
   "description": "A static blog for your website.",
   "main": "index.html",
@@ -18,5 +19,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "handlebars": "^4.0.7",
+    "jquery": "^3.2.1"
+  }
 }

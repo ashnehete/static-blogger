@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Static Blogger</title>
+    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display" rel="stylesheet" /> -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"/>
+    <script src="./bower_components/handlebars/handlebars.min.js"/>
+</head>
+<body>
+    <div id="target"></div>
+    <script id="template" type="text/x-handlebars-template">
+        <div>Use the <strong>{{power}}</strong>, {{name}}!</div>
+    </script>
+    <script>
+    $(document).ready(function() {
+        var loc=location.search.slice(1).toString();
+        //http://localhost:3000/posts.html?3954
+        $.getJSON("./posts.json",function(data){
+            console.log(data[loc]);
+            var template=$('#template').html();
+            console.log(template);
+            var compiled_template=Handlebars.compile(template);
+            var rendered=compiled_template(data[loc]);
+            $('#target').html(rendered);
+        });
+    });
+    </script>
+</body>
+</html>
