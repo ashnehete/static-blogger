@@ -3,46 +3,105 @@
 
 <head>
     <title>My Awesome Blog</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Open+Sans:300|Playfair+Display" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
         }
-        
+
         header {
             font-family: 'Montserrat', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 250px;
+            height: 200px;
             background-color: rgba(0, 191, 255, 1);
             color: #fff;
         }
-        
+
         header>#title {
             font-size: 2em;
         }
-        
+
         header>#subtitle {
             font-size: 1.25em;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .post {
+            width: 800px;
+            max-width: 90%;
+            margin: 10px;
+            padding: 20px;
+            border-bottom: 3px dotted deepskyblue;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            font-size: 1.6rem;
+            font-family: 'Playfair+Display', serif;
+            margin-bottom: 10px;
+        }
+
+        .title a {
+            text-decoration: none;
+            color: black;
+            border-bottom: 1px solid transparent;
+            transition: 0.2s all ease-in-out;
+        }
+
+        .title a:hover {
+            border-bottom-color: black;
+        }
+
+        .description {
+            font-family: 'Open Sans', sans-serif;
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <span id="title">MY AWESOME BLOG</span>
-        <span id="subtitle">with awesome posts...</span>
-    </header>
+<header>
+    <span id="title">MY AWESOME BLOG</span>
+    <span id="subtitle">with awesome posts...</span>
+</header>
 
-    <div class="container">
-        <div class="post">
-            <span class="title"></span>
-            <span class="desc"></span>
-        </div>
+<div class="container" id="wrapper">
+</div>
+
+<script id="post-item-template" type="text/x-handlebars-template">
+    {{#posts}}
+    <div class="post">
+        <span class="title"><a href="{{link}}">{{title}}</a></span>
+        <span class="description">{{description}}</span>
     </div>
+    {{/posts}}
+</script>
+
+<script src="../bower_components/handlebars/handlebars.min.js"></script>
+<script src="../js/ajax.js"></script>
+<script>
+    var source = document.getElementById('post-item-template').innerHTML;
+    var template = Handlebars.compile(source);
+    var wrapper = document.getElementById('wrapper');
+    getJson('blog.json', function (response) {
+        console.log(response);
+        wrapper.innerHTML = template({
+            posts: response
+        });
+    })
+</script>
+<script src="../js/blog-home.js"></script>
+
 </body>
 
 </html>
