@@ -1,6 +1,8 @@
 {
-    "3954":{
-        "name": "Luke",
-        "power": "force"
+    "error":{
+      "file":"error.md"
+    },
+    "random-text-post":{
+        "file":"testPost.md"
     }
 }

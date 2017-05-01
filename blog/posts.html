@@ -2,26 +2,79 @@
 <html>
 <head>
     <title>Static Blogger</title>
-    <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display" rel="stylesheet" /> -->
-    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="./bower_components/handlebars/handlebars.min.js"></script>
+     <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display" rel="stylesheet" />
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/handlebars/handlebars.min.js"></script>
+    <script src="../bower_components/showdown/dist/showdown.min.js"></script>
+    <style>
+        body{
+            font-family: Arial,sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            line-height: 150%;
+        }
+
+        header {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 250px;
+            background-color: rgba(0, 191, 255, 1);
+            color: #fff;
+        }
+
+        header>#title {
+            font-size: 2em;
+        }
+
+        header>#subtitle {
+            font-size: 1.25em;
+        }
+
+        footer{
+            background-color: rgba(29, 160, 209, 1);
+        }
+    </style>
 </head>
 <body>
-<div id="target"></div>
+<header>
+    <span id="title">MY AWESOME BLOG</span>
+    <span id="subtitle">with awesome posts...</span>
+</header>
+<main id="target"></main>
+<footer>
+    Not just any ordinary footer.
+</footer>
+
 <script id="template" type="text/x-handlebars-template">
-    <div>Use the <strong>{{power}}</strong>, {{name}}!</div>
+    <div class="container">
+        <div class="post">
+            {{{body}}}
+        </div>
+    </div>
 </script>
+
 <script>
     $(document).ready(function() {
-        var loc=location.search.slice(1).toString();
-        //http://localhost:3000/posts.html?3954
-        $.getJSON("./posts.json",function(data){
-            console.log(data[loc]);
-            var template=$('#template').html();
-            console.log(template);
-            var compiled_template=Handlebars.compile(template);
-            var rendered=compiled_template(data[loc]);
-            $('#target').html(rendered);
+        var loc=location.search.slice(7);
+        //localhost:3000/blog/posts.html?id=3954&title=random-text-post
+        $.getJSON("./posts.json", function (data) {
+            if(data[loc]){}else{
+                window.location.href=window.location.href.slice(0,window.location.href.indexOf('=')+1)+"error";
+            }
+            var converter = new showdown.Converter(), html;
+            $.get(data[loc].file, function (md) {
+                html = converter.makeHtml(md);
+                var template = $('#template').html();
+                var compiled_template = Handlebars.compile(template);
+                var rendered = compiled_template({"body": html});
+                $('#target').html(rendered);
+            });
         });
     });
 </script>
