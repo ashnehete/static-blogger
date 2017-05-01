@@ -1,0 +1,12 @@
+[
+    {
+        "id": "first-blog-post",
+        "title": "First Blog Post",
+        "description": "Yippee, my first blog post."
+    },
+    {
+        "id": "second-blog-post",
+        "title": "Second Blog Post",
+        "description": "Yippee, my second blog post."
+    }
+]

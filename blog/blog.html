@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Awesome Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Playfair+Display" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 250px;
+            background-color: rgba(0, 191, 255, 1);
+            color: #fff;
+        }
+        
+        header>#title {
+            font-size: 2em;
+        }
+        
+        header>#subtitle {
+            font-size: 1.25em;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <span id="title">MY AWESOME BLOG</span>
+        <span id="subtitle">with awesome posts...</span>
+    </header>
+
+    <div class="container">
+        <div class="post">
+            <span class="title"></span>
+            <span class="desc"></span>
+        </div>
+    </div>
+</body>
+
+</html>
