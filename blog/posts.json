@@ -1,8 +1,14 @@
 {
     "error":{
-      "file":"error.md"
+      "file":"error.md",
+        "author":"Admin"
     },
     "random-text-post":{
-        "file":"testPost.md"
+        "file":"testPost.md",
+        "author":"Admin"
+    },
+    "md-cheatsheet":{
+        "file":"md_cheatsheet.md",
+        "author":"Admin"
     }
 }
